@@ -38,9 +38,9 @@ jobs:
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             echo changed_file|findstr /i /L "ipynb">nul
-            if [errorlevel 1]; then
-              echo notfound
+            if [ "${changed_file: -6}" == ".ipynb" ]; then
+              echo ${changed_file}
             else
-              echo found
+              echo "no notebook changed"
             fi
           done
