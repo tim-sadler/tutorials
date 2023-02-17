@@ -40,7 +40,7 @@ jobs:
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             if [ "${changed_file: -6}" == ".ipynb" ]; then
-              jupyter_to_medium --integration_token="$SECRET" --pub-name="Test" --tags="python, data science" ${changed_file}
+              jupyter_to_medium --integration-token="$SECRET" --pub-name="Test" --tags="python, data science" ${changed_file}
             else
               echo "no notebook changed"
             fi
