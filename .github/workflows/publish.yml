@@ -41,4 +41,5 @@ jobs:
               echo "notebook"
             else
               echo "no notebook"
+            fi
           done
