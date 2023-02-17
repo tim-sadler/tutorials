@@ -32,7 +32,7 @@ jobs:
           cache: 'pip' # caching pip dependencies
       - run: pip install -r requirements.txt
       - id: files
-      - uses: jitterbit/get-changed-files@v1
+        uses: jitterbit/get-changed-files@v1
         with:
           format: 'space-delimited'
       - run: |
