@@ -37,5 +37,8 @@ jobs:
           format: 'space-delimited'
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
-            if ["ipynb" in ${changed_file}] then echo "notebook"; else echo "no notebook";
+            if ["ipynb" in ${changed_file}]; then 
+              echo "notebook"
+            else
+              echo "no notebook"
           done
