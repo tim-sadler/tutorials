@@ -30,4 +30,4 @@ jobs:
         with:
           python-version: '3.9'
           cache: 'pip' # caching pip dependencies
-      - run: pip install jupyter_to_medium
+      - run: pip install -r requirements.txt
