@@ -37,7 +37,7 @@ jobs:
           format: 'space-delimited'
       - run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
-            echo %%a|find "ipynb" >nul
+            echo changed_file|find "ipynb" >nul
             if [errorlevel 1]; then
               echo notfound
             else
