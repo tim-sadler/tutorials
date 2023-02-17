@@ -31,6 +31,11 @@ jobs:
           python-version: '3.9'
           cache: 'pip' # caching pip dependencies
       - run: pip install -r requirements.txt
+      - id: files
       - uses: jitterbit/get-changed-files@v1
         with:
           format: 'space-delimited'
+      - run: |
+          for changed_file in ${{ steps.files.outputs.all }}; do
+            echo "Do something with this ${changed_file}."
+          done
