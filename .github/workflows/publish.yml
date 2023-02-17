@@ -23,21 +23,24 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
-
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install Python 3.9
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
           cache: 'pip' # caching pip dependencies
-      - run: pip install -r requirements.txt
-      - id: files
+      - name: Install Requirements
+        run: pip install -r requirements.txt
+      - name: Find changed files
+        id: files
         uses: jitterbit/get-changed-files@v1
         with:
           format: 'space-delimited'
+      - name: Publish to Medium
         env:
           SECRET: ${{ secrets.MEDIUM }}
-      - run: |
+        run: |
           for changed_file in ${{ steps.files.outputs.all }}; do
             if [ "${changed_file: -6}" == ".ipynb" ]; then
               echo $changed_file
